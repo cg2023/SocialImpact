@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Impact Portfolio — Calvin Griffin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2240;
+    --gold: #c9973a;
+    --cream: #faf8f3;
+    --warm-gray: #6b6560;
+    --light-border: #e4ddd4;
+    --text: #1a1612;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 54px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  nav .brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+  }
+  nav ul a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 80px 40px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(201,151,58,0.04) 60px,
+      rgba(201,151,58,0.04) 61px
+    );
+  }
+  .hero .overline {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 300;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .gold-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 24px auto 0;
+    position: relative;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--light-border);
+  }
+  section:last-child { border-bottom: none; }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--warm-gray);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .requirements-box {
+    background: var(--navy);
+    color: white;
+    padding: 28px 32px;
+    border-left: 4px solid var(--gold);
+  }
+  .requirements-box h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+  .req-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .req-item:last-child { margin-bottom: 0; }
+  .req-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* ── ACTIVITY CARDS ── */
+  .activity-card {
+    background: white;
+    border: 1px solid var(--light-border);
+    margin-bottom: 56px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+  .activity-card:last-child { margin-bottom: 0; }
+
+  .card-header {
+    background: var(--navy);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .card-header-text h3 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .card-header-text .card-subtitle {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  .merit-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    flex-shrink: 0;
+  }
+
+  .card-body { padding: 36px; }
+
+  .card-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--light-border);
+    letter-spacing: 0.02em;
+  }
+
+  .card-body p {
+    color: var(--warm-gray);
+    margin-bottom: 18px;
+    font-weight: 300;
+    font-size: 16px;
+  }
+  .card-body p:last-child { margin-bottom: 0; }
+
+  /* course sub-sections */
+  .course-block {
+    margin-bottom: 28px;
+    padding-left: 18px;
+    border-left: 3px solid var(--gold);
+  }
+  .course-block:last-of-type { margin-bottom: 0; }
+  .course-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .course-block .course-meta {
+    font-size: 13px;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  .course-block p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  /* logo strip */
+  .logo-strip {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 36px;
+    background: #f4f1eb;
+    border-top: 1px solid var(--light-border);
+  }
+  .logo-placeholder {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--warm-gray);
+    font-style: italic;
+    border: 1px dashed var(--light-border);
+    padding: 0 16px;
+    font-weight: 300;
+  }
+  .logo-label {
+    font-size: 12px;
+    color: var(--warm-gray);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* verification */
+  .verification-box {
+    background: #f4f1eb;
+    border-left: 3px solid var(--navy);
+    padding: 16px 20px;
+    margin-top: 24px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--warm-gray);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .verification-box strong {
+    font-style: normal;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* card section spacing */
+  .card-section { margin-bottom: 32px; }
+  .card-section:last-child { margin-bottom: 0; }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .summary-table thead tr {
+    background: var(--navy);
+    color: white;
+  }
+  .summary-table thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .summary-table tbody tr:nth-child(even) { background: #f4f1eb; }
+  .summary-table tbody tr:nth-child(odd) { background: white; }
+  .summary-table tbody td {
+    padding: 13px 18px;
+    color: var(--warm-gray);
+    font-weight: 300;
+    font-size: 14px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .summary-table tbody td:first-child {
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .tag-merit {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+  }
+
+  .summary-note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--warm-gray);
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 32px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    nav ul { gap: 18px; }
+    .card-body { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">Calvin Griffin · DBA Candidate</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="overline">Marymount University · Doctor of Business Administration</div>
+  <h1>Social Impact Portfolio</h1>
+  <p class="subtitle">Documenting the application of doctoral scholarship to college-level instruction across Texas institutions</p>
+  <div class="gold-rule"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Portfolio Overview</div>
+        <div class="section-title" style="font-size:1.5rem; margin-bottom:20px;">About This Portfolio</div>
+        <p>This portfolio documents the social impact activities completed in fulfillment of the Marymount University DBA Social Impact Portfolio requirement.</p>
+        <p>The activities presented reflect the direct application of knowledge gained through doctoral studies to college-level instruction in technology and business disciplines, benefiting students across two Texas institutions.</p>
+        <p>Activities were conducted during the 2024 academic year and are verified through official appointment confirmations and institutional syllabi.</p>
+      </div>
+      <div class="requirements-box">
+        <h4>Requirements Met</h4>
+        <div class="req-item">
+          <div class="req-dot"></div>
+          <div>Minimum requirement: 1 meritorious or 2 satisfactory activities</div>
+        </div>
+        <div class="req-item">
+          <div class="req-dot"></div>
+          <div>Classification: <strong style="color:var(--gold)">Meritorious</strong> — Teaching a college-level business or technology course</div>
+        </div>
+        <div class="req-item">
+          <div class="req-dot"></div>
+          <div>Activities presented: <strong style="color:var(--gold)">4 courses across 2 institutions</strong></div>
+        </div>
+        <div class="req-item">
+          <div class="req-dot"></div>
+          <div>Students impacted: <strong style="color:var(--gold)">80+ across Webster University and Palo Alto College</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="container">
+    <div class="section-label">Impact Activities</div>
+    <div class="section-title">Teaching Engagements</div>
+
+    <!-- CARD 1: WEBSTER -->
+    <div class="activity-card">
+      <div class="card-header">
+        <div class="card-header-text">
+          <h3>Webster University</h3>
+          <div class="card-subtitle">Adjunct Assistant Professor · San Antonio Metropolitan Campus · 2024</div>
+        </div>
+        <div class="merit-badge">Meritorious</div>
+      </div>
+
+      <!-- LOGO STRIP -->
+      <div class="logo-strip">
+        <!-- Replace the placeholder below with an <img> tag once you have the Webster logo file -->
+        <div class="logo-placeholder">[ Insert Webster University Logo Here ]</div>
+        <div class="logo-label">Webster University · San Antonio Metropolitan, TX</div>
+      </div>
+
+      <div class="card-body">
+
+        <div class="card-section">
+          <div class="card-section-title">Description</div>
+          <p>During 2024, I served as an Adjunct Assistant Professor at Webster University's San Antonio Metropolitan campus, teaching graduate-level courses in Information Technology Management. Over three consecutive terms, I instructed the following courses across a combined total of 80 graduate students.</p>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-title">Courses Taught</div>
+
+          <div class="course-block">
+            <h4>ITM 5400 – Systems Analysis, Design, and Implementation</h4>
+            <div class="course-meta">Spring 1, 2024 (29 students) &nbsp;·&nbsp; Summer 2024 (28 students)</div>
+            <p>This course covers the full information systems life cycle, from initial feasibility analysis through structured design, prototyping, procurement, and implementation. Students examine the roles and responsibilities of personnel involved in systems development, as well as the communication and documentation tools that support each phase of the life cycle. I delivered this course in person across two terms, working directly with students in a classroom environment.</p>
+          </div>
+
+          <div class="course-block">
+            <h4>ITM 6000 – Final Project in Information Technology Management</h4>
+            <div class="course-meta">Spring 2, 2024 (23 students)</div>
+            <p>This capstone course is designed for students who have completed all other required courses in the IT Management graduate curriculum. It requires students to synthesize, integrate, and apply the full body of technical and management knowledge acquired throughout their program. I guided each student through the development of a substantive final project demonstrating graduate-level competency in IT management practice.</p>
+          </div>
+        </div>
+
+        <div class="verification-box">
+          <strong>Verification:</strong> Official faculty teaching appointment confirmation emails from Webster University (appointments@webster.edu) are on file for each of the three terms listed above.
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-title">Reflection</div>
+          <p>Teaching at Webster University was a uniquely formative experience, shaped in large part by the makeup of the student population I served. The overwhelming majority of students in my courses were international graduate students, primarily from India, many of whom were navigating both a rigorous academic program and the challenges of building professional lives in a new country. Teaching these courses in person created an environment of genuine engagement — there was real energy in the room, and the face-to-face format allowed for the kind of dynamic discussion and immediate feedback that is difficult to replicate online.</p>
+          <p>This cross-cultural dimension added meaningful depth to the classroom experience. Students brought perspectives shaped by different educational systems, professional norms, and relationships with technology — perspectives that enriched discussion around systems design decisions and organizational change in ways that a more homogeneous class rarely achieves. My DBA studies have deepened my understanding of how culture, structure, and technology interact within organizations, and I found that these conversations became richer precisely because the room held so many different lived experiences.</p>
+          <p>In ITM 5400, I connected systems analysis concepts to broader themes of technology adoption and organizational disruption — topics directly relevant to students who planned to work in IT management roles in industries undergoing rapid digital transformation. For many of my students, the frameworks we discussed were not abstract; they were preparing to enter professional environments where these decisions carry significant organizational and economic consequences. ITM 6000 was particularly meaningful. Guiding students through a capstone project demands more than content delivery — it requires mentorship. My own experience as a doctoral candidate gave me credibility and empathy in that role, and I believe that showed in the quality of work my students produced.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 2: PALO ALTO -->
+    <div class="activity-card">
+      <div class="card-header">
+        <div class="card-header-text">
+          <h3>Palo Alto College — Alamo Colleges District</h3>
+          <div class="card-subtitle">Instructor of Record · Business Statistics · Fall 2024</div>
+        </div>
+        <div class="merit-badge">Meritorious</div>
+      </div>
+
+      <!-- LOGO STRIP -->
+      <div class="logo-strip">
+        <!-- Replace the placeholder below with an <img> tag once you have the PAC logo file -->
+        <div class="logo-placeholder">[ Insert Palo Alto College Logo Here ]</div>
+        <div class="logo-label">Alamo Colleges District · San Antonio, TX</div>
+      </div>
+
+      <div class="card-body">
+
+        <div class="card-section">
+          <div class="card-section-title">Description</div>
+
+          <div class="course-block">
+            <h4>BUSI-2305 – Business Statistics</h4>
+            <div class="course-meta">Fall 2024 · Aug 26 – Dec 14, 2024 · Tuesday &amp; Thursday, 5:30–6:45 PM · Online Synchronous (Zoom) · CRN: 56111</div>
+            <p>This course covers descriptive and inferential statistical techniques for business and economic decision-making, including probability, sampling distributions, hypothesis testing, confidence intervals, and linear regression. Students applied statistical software — including Microsoft Excel — throughout the semester to analyze real data sets. The course is part of the Business Field of Study and serves students pursuing degrees in Business Management and Operations Management.</p>
+          </div>
+        </div>
+
+        <div class="verification-box">
+          <strong>Verification:</strong> The official course syllabus for BUSI-2305-PAC 015 (CRN: 56111), issued through the Alamo Colleges District / Palo Alto College, confirms my role as instructor of record and is available as a supporting document.
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-title">Reflection</div>
+          <p>Teaching Business Statistics at Palo Alto College offered a strikingly different — and equally rewarding — experience from my Webster courses. The student population was a genuine cross-section of the San Antonio community: recent high school graduates taking their first college-level quantitative course alongside non-traditional students who had been away from formal education for years, and working adults managing jobs, children, and coursework simultaneously. That range of backgrounds and life circumstances made every class session an exercise in meeting students where they are.</p>
+          <p>The online synchronous format added another layer of complexity. Holding student attention and fostering real engagement through a Zoom session at 5:30 in the evening — when many students were coming straight from work or managing household responsibilities — demands intentionality. I designed the course so that every statistical concept was immediately grounded in a business decision context, because abstract formulas alone will not hold a room full of students with competing demands on their time and attention. When students could see that hypothesis testing was a tool for making better hiring decisions, or that regression analysis could help a small business owner understand what drives revenue, the material became relevant in a way that pure mathematical instruction rarely achieves.</p>
+          <p>My doctoral training in research methodology and quantitative reasoning gave me a depth of subject matter knowledge I could draw on to answer the harder questions in the room — the ones that go beyond the textbook. More importantly, it gave me the ability to distinguish between what students need to understand conceptually and what they need to execute practically, which is not always the same thing. Serving this community reinforced for me the social value of making rigorous analytical thinking genuinely accessible to students who might not otherwise encounter it in a meaningful way — and who stand to benefit enormously when they do.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="container">
+    <div class="section-label">At a Glance</div>
+    <div class="section-title">Activity Summary</div>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Institution</th>
+          <th>Course</th>
+          <th>Level</th>
+          <th>Term</th>
+          <th>Students</th>
+          <th>Classification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Webster University</td>
+          <td>ITM 5400 – Systems Analysis &amp; Design</td>
+          <td>Graduate</td>
+          <td>Spring 1, 2024</td>
+          <td>29</td>
+          <td><span class="tag-merit">Meritorious</span></td>
+        </tr>
+        <tr>
+          <td>Webster University</td>
+          <td>ITM 6000 – Final Project in IT Mgmt</td>
+          <td>Graduate</td>
+          <td>Spring 2, 2024</td>
+          <td>23</td>
+          <td><span class="tag-merit">Meritorious</span></td>
+        </tr>
+        <tr>
+          <td>Webster University</td>
+          <td>ITM 5400 – Systems Analysis &amp; Design</td>
+          <td>Graduate</td>
+          <td>Summer 2024</td>
+          <td>28</td>
+          <td><span class="tag-merit">Meritorious</span></td>
+        </tr>
+        <tr>
+          <td>Palo Alto College</td>
+          <td>BUSI-2305 – Business Statistics</td>
+          <td>Undergraduate</td>
+          <td>Fall 2024</td>
+          <td>—</td>
+          <td><span class="tag-merit">Meritorious</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="summary-note">Requirement met: minimum of one (1) meritorious activity · Portfolio approved by dissertation chair at defense</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Calvin Griffin</span> · DBA Candidate · Marymount University · Social Impact Portfolio
+</footer>
+
+</body>
+</html>
